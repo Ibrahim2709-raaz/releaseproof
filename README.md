@@ -80,7 +80,7 @@ memory limit (default `4g`; big TypeScript builds may need more), `--json` for t
 `--offline` to skip refreshing the Sigstore trust root, `--keep-volume` to inspect the
 build afterwards. Every rule and severity is documented in [docs/rules.md](./docs/rules.md).
 
-Requirements: Node 22+, Docker. No account, no API key, no telemetry.
+Requirements: Node 22.12+, Docker. No account, no API key, no telemetry.
 
 Questions after a first run, such as why a package reports COULD NOT VERIFY or how to check a
 staged version, are answered in the [FAQ](./docs/faq.md).
@@ -128,7 +128,7 @@ is not. The action refuses to run on `pull_request_target`. All inputs are docum
   trust root, with the certificate (not the build's own claim) as the source of truth.
 - Rebuilding a package from the certified commit in a hardened Docker container and
   comparing it with the release file by file.
-- 35 rules with graded severity ([docs/rules.md](./docs/rules.md)) and a verdict that fails
+- 42 rules with graded severity ([docs/rules.md](./docs/rules.md)) and a verdict that fails
   closed: a failed rebuild is "could not verify", never "safe".
 - Tested against real releases: 11 popular packages rebuild bit-for-bit, 0 false alarms
   ([results](./docs/real-world-results.md)).
