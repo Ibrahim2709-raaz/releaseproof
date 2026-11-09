@@ -6,7 +6,7 @@ Thanks for helping. A few rules keep this tool trustworthy; please follow them.
 
 Use an EditorConfig-aware editor to apply the repository's `.editorconfig` formatting defaults.
 
-Node 22+, Corepack and Docker. Then:
+Node 22.12+, Corepack and Docker. Then:
 
 ```sh
 corepack enable pnpm
