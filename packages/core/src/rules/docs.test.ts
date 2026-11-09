@@ -9,6 +9,7 @@ import { describe, expect, it } from "vitest";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const RULES_DOC = path.join(here, "../../../../docs/rules.md");
+const README = path.join(here, "../../../../README.md");
 const KEBAB_ID = /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/;
 
 /**
@@ -159,6 +160,15 @@ describe("docs/rules.md", () => {
     const stale = difference(inDocs, inCode);
     expect(stale, `docs/rules.md lists ids the code never reports: ${stale.join(", ")}`).toEqual(
       [],
+    );
+  });
+
+  it("keeps the README rule count in sync with the rule sources", () => {
+    const documented = readFileSync(README, "utf8").match(
+      /^- (\d+) rules with graded severity/m,
+    )?.[1];
+    expect(documented, "README.md must state the current number of graded rules").toBe(
+      String(inCode.size),
     );
   });
 
